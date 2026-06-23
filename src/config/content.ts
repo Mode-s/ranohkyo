@@ -23,11 +23,11 @@ export const content = {
       href: "/",
     } satisfies Logo,
     nav: [
-      { label: "料金",   href: "#" },
-      { label: "お部屋",    href: "#" },
-      { label: "基本情報",    href: "#" },
-      { label: "アクセス",  href: "#" },
-      { label: "お問い合わせ", href: "#" },
+      { label: "料金",   href: "#price" },
+      { label: "お部屋",    href: "#rooms" },
+      { label: "基本情報",    href: "#info" },
+      { label: "アクセス",  href: "#access" },
+      { label: "お問い合わせ", href: "#contact" },
     ] satisfies NavItem[],
   },
   //　メニュー

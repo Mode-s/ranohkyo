@@ -8,32 +8,39 @@ const { shop } = siteConfig;
     <header class="section-title">
       <h2 class="title">基本情報</h2>
     </header>
+
     <dl class="info-list">
       {shop.address && (
-        <>
+        <div class="info-row">
           <dt class="info-label">住所</dt>
           <dd class="info-data">{shop.address}</dd>
-        </>
+        </div>
+      )}
+      {shop.access && (
+        <div class="info-row">
+          <dt class="info-label">アクセス</dt>
+          <dd class="info-data">{shop.access}</dd>
+        </div>
       )}
       {shop.tel.display && (
-        <>
+        <div class="info-row">
           <dt class="info-label">電話</dt>
           <dd class="info-data">
-            <a href={`tel:${shop.tel.link}`}>{shop.tel.display}</a>
+            <a class="info-tel" href={`tel:${shop.tel.link}`}>{shop.tel.display}</a>
           </dd>
-        </>
+        </div>
       )}
-      {shop.checkin   && (
-        <>
+      {shop.checkin && (
+        <div class="info-row">
           <dt class="info-label">チェックイン</dt>
           <dd class="info-data">{shop.checkin}</dd>
-        </>
+        </div>
       )}
-      {shop.checkout  && (
-        <>
+      {shop.checkout && (
+        <div class="info-row">
           <dt class="info-label">チェックアウト</dt>
           <dd class="info-data">{shop.checkout}</dd>
-        </>
+        </div>
       )}
     </dl>
   </div>
@@ -43,18 +50,59 @@ const { shop } = siteConfig;
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
 
-  // ―――――――――――――――――――――――――――――――――――
-  .section {
-
+  .section-title {
+    margin-bottom: 40px;
+    text-align: center;
   }
 
-  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
-  @include tb {
-
+  .title {
+    font-size: $fs-2xl;
   }
 
-  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
+  .info-list {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid $muted-c;
+
+    &:first-child {
+      border-top: 1px solid $muted-c;
+    }
+  }
+
+  .info-label {
+    font-weight: bold;
+    color: $sub-c;
+  }
+
+  .info-data {
+    color: $main-c;
+  }
+
+  .info-tel {
+    color: $accent-c;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
   @include sp {
+    .section-title {
+      margin-bottom: 28px;
+    }
 
+    .info-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding: 16px 0;
+    }
   }
 </style>
