@@ -5,15 +5,15 @@ import { siteConfig } from './site';
 import logoImg from '../assets/images/logo.svg';
 
 //　メニュー / プランイメージ画像
-import item01 from '../assets/images/logo.png';
-import item02 from '../assets/images/logo.png';
-import item03 from '../assets/images/logo.png';
-import item04 from '../assets/images/logo.png';
-import item05 from '../assets/images/logo.png';
+import item01 from '../assets/images/in-room02.png';
+import item02 from '../assets/images/in-room08.png';
+import item03 from '../assets/images/in-room04.png';
 
 type Logo = { src: ImageMetadata; alt: string; href: string };
 type NavItem = { label: string; href: string };
 type Item = { image: ImageMetadata; name: string; price?: string; description?: string };
+type Room = { name: string; bedType: string; price: number };
+type Amenity = { label: string; icon: string };
 
 export const content = {
   header: {
@@ -38,5 +38,21 @@ export const content = {
       { image: item02, name: "ツインルーム", price: "￥14,760", description: "ベッドタイプ：シングル２台" },
       { image: item03, name: "トリプルルーム", price: "￥15,000", description: "布団" },
     ] satisfies Item[],
+  },
+  price: {
+    rooms: [
+      { name: 'シングル', bedType: 'シングルベッド', price: 11200 },
+      { name: 'ツイン', bedType: 'シングルベッド２台', price: 14760 },
+      { name: 'トリプル', bedType: '布団３組', price: 15000 },
+    ] satisfies Room[],
+    amenities: [
+      { label: '寝室のドアの鍵', icon: 'mdi:door-closed-lock' },
+      { label: 'Wi-Fi', icon: 'mdi:wifi' },
+      { label: '洗濯機 / 乾燥機', icon: 'mdi:washing-machine' },
+      { label: 'キッチン', icon: 'mdi:stove' },
+      { label: 'エアコン', icon: 'mdi:air-conditioner' },
+      { label: '冷蔵庫', icon: 'mdi:fridge' },
+      { label: 'ヘアドライヤー', icon: 'mdi:hair-dryer' },
+    ] satisfies Amenity[],
   },
 } as const;

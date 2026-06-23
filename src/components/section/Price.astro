@@ -1,10 +1,41 @@
 ---
+import { Icon } from 'astro-icon/components';
+import { content } from '../../config/content';
+
+const { rooms, amenities } = content.price;
 ---
-<section class="section about" id="about">
-  <div class="inner about-inner">
+<section class="section price" id="price">
+  <div class="inner price-inner">
     <header class="section-title">
       <h2 class="title">料金</h2>
     </header>
+
+    <section class="price-block">
+      <h3 class="price-heading">ルーム</h3>
+      <ul class="room-list">
+        {rooms.map((room) => (
+          <li class="room-item">
+            <div class="room-head">
+              <h4 class="room-name">{room.name}</h4>
+              <p class="room-price">¥{room.price.toLocaleString()}</p>
+            </div>
+            <p class="room-bed">ベッドタイプ：{room.bedType}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="price-block">
+      <h3 class="price-heading">設備</h3>
+      <ul class="amenity-list">
+        {amenities.map((item) => (
+          <li class="amenity-item">
+            <Icon class="amenity-icon" name={item.icon} />
+            <span class="amenity-label">{item.label}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </section>
 
@@ -12,18 +43,109 @@
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
 
-  // ――――――――――――――――――――――――――――――――――――――――
-  .section {
-
+  .section-title {
+    margin-bottom: 40px;
+    text-align: center;
   }
 
-  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
+  .title {
+    font-size: $fs-2xl;
+  }
+
+  .price-block + .price-block {
+    margin-top: 48px;
+  }
+
+  .price-heading {
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $muted-c;
+    font-size: $fs-lg;
+    color: $sub-c;
+  }
+
+  .room-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .room-item {
+    padding: 20px 24px;
+    background: $muted-c;
+  }
+
+  .room-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .room-name {
+    font-size: $fs-lg;
+  }
+
+  .room-price {
+    font-size: $fs-xl;
+    color: $accent-c;
+    white-space: nowrap;
+  }
+
+  .room-bed {
+    font-size: $fs-sm;
+    color: $sub-c;
+  }
+
+  .amenity-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .amenity-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 12px;
+    background: $muted-c;
+    text-align: center;
+  }
+
+  .amenity-icon {
+    width: 28px;
+    height: 28px;
+    color: $accent-c;
+  }
+
+  .amenity-label {
+    font-size: $fs-sm;
+    line-height: 1.5;
+  }
+
   @include tb {
-
+    .amenity-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
   @include sp {
+    .section-title {
+      margin-bottom: 28px;
+    }
 
+    .price-block + .price-block {
+      margin-top: 36px;
+    }
+
+    .room-head {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .amenity-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
