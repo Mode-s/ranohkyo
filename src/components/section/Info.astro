@@ -6,7 +6,7 @@ const { shop } = siteConfig;
 <section class="section info" id="info">
   <div class="inner info-inner">
     <header class="section-title">
-      <h2 class="title">Info</h2>
+      <h2 class="title">基本情報</h2>
     </header>
     <dl class="info-list">
       {shop.address && (
@@ -23,28 +23,16 @@ const { shop } = siteConfig;
           </dd>
         </>
       )}
-      {shop.hours   && (
+      {shop.checkin   && (
         <>
-          <dt class="info-label">営業時間</dt>
-          <dd class="info-data">{shop.hours}</dd>
+          <dt class="info-label">チェックイン</dt>
+          <dd class="info-data">{shop.checkin}</dd>
         </>
       )}
-      {shop.closed  && (
+      {shop.checkout  && (
         <>
-          <dt class="info-label">定休日</dt>
-          <dd class="info-data">{shop.closed}</dd>
-        </>
-      )}
-      {shop.seats   && (
-        <>
-          <dt class="info-label">席数</dt>
-          <dd class="info-data">{shop.seats}</dd>
-        </>
-      )}
-      {shop.parking && (
-        <>
-          <dt class="info-label">駐車場</dt>
-          <dd class="info-data">{shop.parking}</dd>
+          <dt class="info-label">チェックアウト</dt>
+          <dd class="info-data">{shop.checkout}</dd>
         </>
       )}
     </dl>
