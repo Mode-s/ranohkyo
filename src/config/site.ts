@@ -12,6 +12,9 @@ export const siteConfig = {
     instagram: "", //　instagram - URL
     line: "", //　line - URL
     facebook: "", //　facebook - URL
+    booking: "https://www.booking.com/hotel/jp/lan-weng-ju-ranoukiyo-ranohkyo-jing-du-shi.ja.html?aid=356980&label=gog235jc-10CAsodUIqbGFuLXdlbmctanUtcmFub3VraXlvLXJhbm9oa3lvLWppbmctZHUtc2hpSBVYA2h1iAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAKPlenRBsACAdICJDMyZDc3ZGQzLTQwODUtNGU1My1hMzgyLTA5YmYwMDIwODJlZtgCAeACAQ&sid=685169c01fbff11bf1389711a5923753&checkin=2026-06-24&checkout=2026-06-25&dest_id=-235402&dest_type=city&dist=0&group_adults=1&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=1&req_children=0&room1=A&sb_price_type=total&soh=1&sr_order=popularity&srepoch=1782205095&srpvid=d5033f085bac00a7&type=total&ucfs=1&#no_availability_msg",
+    airbnb: "https://www.airbnb.jp/rooms/960704929704328758?source_impression_id=p3_1782205124_P3fHv-dpVLgz21al",
+    trivago: "https://www.trivago.jp/ja/oar/%E3%83%99%E3%83%83%E3%83%89-%E3%82%A2%E3%83%B3%E3%83%89-%E3%83%96%E3%83%AC%E3%83%83%E3%82%AF%E3%83%95%E3%82%A1%E3%82%B9%E3%83%88-%E5%B5%90%E7%BF%81%E5%B1%85%E3%82%89%E3%82%93%E3%81%8A%E3%81%86%E3%81%8D%E3%82%87-ranohkyo-%E4%BA%AC%E9%83%BD?search=100-40286096",
   },
 
   //　基本情報

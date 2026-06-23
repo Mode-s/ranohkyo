@@ -34,11 +34,9 @@ export const content = {
   menu: {
     title: "お部屋",
     items: [
-      { image: item01, name: "商品A", price: "10", description: "あ" },
-      { image: item02, name: "商品B", price: "20", description: "い" },
-      { image: item03, name: "商品C", price: "30", description: "う" },
-      { image: item04, name: "商品D", price: "40", description: "え" },
-      { image: item05, name: "商品E", price: "50", description: "お" },
+      { image: item01, name: "シングルルーム", price: "￥11,200", description: "ベッドタイプ：シングル" },
+      { image: item02, name: "ツインルーム", price: "￥14,760", description: "ベッドタイプ：シングル２台" },
+      { image: item03, name: "トリプルルーム", price: "￥15,000", description: "布団" },
     ] satisfies Item[],
   },
 } as const;

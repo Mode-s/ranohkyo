@@ -5,10 +5,9 @@ import { siteConfig } from '../../config/site';
 const { shop, sns } = siteConfig;
 
 const snsLinks = [
-  { label: "X",         href: sns.x,         icon: "simple-icons:x" },
-  { label: "Instagram", href: sns.instagram, icon: "simple-icons:instagram" },
-  { label: "LINE",      href: sns.line,      icon: "simple-icons:line" },
-  { label: "Facebook",  href: sns.facebook,  icon: "simple-icons:facebook" },
+  { label: "Booking.com",         href: sns.booking,         icon: "simple-icons:bookingdotcom" },
+  { label: "airbnb",              href: sns.airbnb,          icon: "simple-icons:airbnb" },
+  { label: "trivago",             href: sns.trivago,         icon: "simple-icons:trivago" },
 ].filter(( item ) => item.href );
 ---
 <section class="section contact" id="contact">
@@ -16,20 +15,25 @@ const snsLinks = [
     <header class="section-title">
       <h2 class="title">お問い合わせ</h2>
     </header>
-    <div class="actions">
-      { shop.tel.display && (
-        <a class="tel" href={`tel:${ shop.tel.link }`}>
+    <div class="contact-body">
+      {shop.tel.display && (
+        <a class="contact-tel" href={`tel:${shop.tel.link}`}>
           <Icon class="contact-tel-icon" name="mdi:phone" />
-          { shop.tel.display }
+          <span class="contact-tel-text">{shop.tel.display}</span>
         </a>
       )}
-      { snsLinks.length > 0 && (
-        <ul class="sns-list">
-          { snsLinks.map(( item ) => (
-            <li class="sns-item">
-              <a class="sns-link" href={ item.href } target="_blank" rel="noopener noreferrer">
-                <Icon class="sns-icon" name={item.icon} />
-                {item.label}
+      {snsLinks.length > 0 && (
+        <ul class="contact-sns-list">
+          {snsLinks.map((item) => (
+            <li class="contact-sns-item">
+              <a
+                class="contact-sns-link"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon class="contact-sns-icon" name={item.icon} />
+                <span class="contact-sns-text">{item.label}</span>
               </a>
             </li>
           ))}
@@ -38,23 +42,91 @@ const snsLinks = [
     </div>
   </div>
 </section>
-
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
-
-  // ―――――――――――――――――――――――――――――――――――
-  .section {
-
+  .contact-inner {
+    
+  }
+  .section-title {
+    margin-bottom: 40px;
   }
 
-  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
-  @include tb {
-
+  .contact-body {
+    display: flex;
+    justify-content: center;
+    max-width: 700px;
+    gap: 32px;
+    margin: 0 auto;
   }
 
-  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
+  .contact-tel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 300px;
+    width: 100%;
+    padding: 16px 24px;
+    border: 1px solid $accent-c;
+    color: $main-c;
+    font-size: $fs-lg;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .contact-tel-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .contact-sns-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .contact-sns-item {
+    max-width: 200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .contact-sns-link {
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+    gap: 12px;
+    padding: 14px 20px;
+    background: $muted-c;
+    color: $main-c;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .contact-sns-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
   @include sp {
+    .section-title {
+      margin-bottom: 28px;
+    }
 
+    .contact-body {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-tel {
+      max-width: 200px;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 </style>

@@ -106,7 +106,7 @@ const { logo, nav } = content.header;
       background: rgba(0, 0, 0, 0.9);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
+      transition: none;
       z-index: 110;
     }
     .nav-list {
@@ -119,6 +119,7 @@ const { logo, nav } = content.header;
     .header.is-open .nav {
       opacity: 1;
       visibility: visible;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
     }
     .header.is-open .hamburger span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
