@@ -5,25 +5,25 @@ const { shop } = siteConfig;
 ---
 <section class="section info" id="info">
   <div class="inner info-inner">
-    <header class="section-title">
+    <header class="section-title" data-reveal>
       <h2 class="title">基本情報</h2>
     </header>
 
     <dl class="info-list">
       {shop.address && (
-        <div class="info-row">
+        <div class="info-row" data-reveal>
           <dt class="info-label">住所</dt>
           <dd class="info-data">{shop.address}</dd>
         </div>
       )}
       {shop.access && (
-        <div class="info-row">
+        <div class="info-row" data-reveal>
           <dt class="info-label">アクセス</dt>
           <dd class="info-data">{shop.access}</dd>
         </div>
       )}
       {shop.tel.display && (
-        <div class="info-row">
+        <div class="info-row" data-reveal>
           <dt class="info-label">電話</dt>
           <dd class="info-data">
             <a class="info-tel" href={`tel:${shop.tel.link}`}>{shop.tel.display}</a>
@@ -31,13 +31,13 @@ const { shop } = siteConfig;
         </div>
       )}
       {shop.checkin && (
-        <div class="info-row">
+        <div class="info-row" data-reveal>
           <dt class="info-label">チェックイン</dt>
           <dd class="info-data">{shop.checkin}</dd>
         </div>
       )}
       {shop.checkout && (
-        <div class="info-row">
+        <div class="info-row" data-reveal>
           <dt class="info-label">チェックアウト</dt>
           <dd class="info-data">{shop.checkout}</dd>
         </div>

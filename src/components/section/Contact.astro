@@ -12,20 +12,20 @@ const snsLinks = [
 ---
 <section class="section contact" id="contact">
   <div class="inner contact-inner">
-    <header class="section-title">
+    <header class="section-title" data-reveal>
       <h2 class="title">お問い合わせ</h2>
     </header>
     <div class="contact-body">
       {shop.tel.display && (
-        <a class="contact-tel" href={`tel:${shop.tel.link}`}>
+        <a class="contact-tel" href={`tel:${shop.tel.link}`} data-reveal>
           <Icon class="contact-tel-icon" name="mdi:phone" />
           <span class="contact-tel-text">{shop.tel.display}</span>
         </a>
       )}
       {snsLinks.length > 0 && (
         <ul class="contact-sns-list">
-          {snsLinks.map((item) => (
-            <li class="contact-sns-item">
+          {snsLinks.map((item, i) => (
+            <li class="contact-sns-item" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
               <a
                 class="contact-sns-link"
                 href={item.href}
