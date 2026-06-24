@@ -14,7 +14,30 @@ const { title, items } = content.menu;
       {items.map((item, i) => (
         <li class="room-card" data-reveal style={`--reveal-delay:${i * 0.1}s`}>
           <div class="room-img-wrap">
-            <Image class="room-img" src={item.image} alt={item.name} />
+            {item.images.length > 1 ? (
+              <div class="room-slider" data-room-slider>
+                {item.images.map((src, j) => (
+                  <Image
+                    class:list={['room-img', 'room-slide', { 'is-active': j === 0 }]}
+                    src={src}
+                    alt={item.name}
+                    data-slide={j}
+                  />
+                ))}
+                <div class="room-indicators">
+                  {item.images.map((_, j) => (
+                    <button
+                      type="button"
+                      class:list={['room-indicator', { 'is-active': j === 0 }]}
+                      aria-label={`${j + 1}枚目`}
+                      data-index={j}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Image class="room-img" src={item.images[0]} alt={item.name} />
+            )}
           </div>
           <div class="room-body">
             <h3 class="room-name">{item.name}</h3>
@@ -63,6 +86,48 @@ const { title, items } = content.menu;
     aspect-ratio: 16 / 9;
   }
 
+  .room-slider {
+    position: relative;
+    aspect-ratio: 16 / 9;
+  }
+
+  .room-slide {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    pointer-events: none;
+
+    &.is-active {
+      opacity: 1;
+    }
+  }
+
+  .room-indicators {
+    position: absolute;
+    display: flex;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 8px;
+    z-index: 1;
+  }
+
+  .room-indicator {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+
+    &.is-active {
+      background: #fff;
+    }
+  }
+
   .room-body {
     display: grid;
     gap: 8px;
@@ -93,3 +158,36 @@ const { title, items } = content.menu;
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-room-slider]').forEach((slider) => {
+    const slides = slider.querySelectorAll<HTMLElement>('.room-slide');
+    const indicators = slider.querySelectorAll<HTMLButtonElement>('.room-indicator');
+    if (slides.length <= 1) return;
+
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    const goTo = (index: number) => {
+      slides[current]?.classList.remove('is-active');
+      indicators[current]?.classList.remove('is-active');
+      current = index;
+      slides[current]?.classList.add('is-active');
+      indicators[current]?.classList.add('is-active');
+    };
+
+    const start = () => {
+      timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
+    };
+
+    indicators.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(i);
+        start();
+      });
+    });
+
+    start();
+  });
+</script>
