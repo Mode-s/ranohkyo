@@ -12,14 +12,17 @@ const { rooms, amenities } = content.price;
 
     <section class="price-block">
       <h3 class="price-heading" data-reveal>ルーム</h3>
+      <p class="price-label" data-reveal style="--reveal-delay:0.08s">宿泊料金について</p>
+      <p class="label-description" data-reveal style="--reveal-delay:0.16s">当施設では、曜日・季節・イベント開催状況・予約状況に応じて、宿泊料金が変動する「ダイナミックプライシング（変動料金制）」を採用しております。</p>
       <ul class="room-list">
         {rooms.map((room, i) => (
           <li class="room-item" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
             <div class="room-head">
-              <h4 class="room-name">{room.name}</h4>
-              <p class="room-price">¥{room.price.toLocaleString()}</p>
+              <h5 class="room-name">{room.name}</h5>
+              <p class="room-price">¥{room.price.toLocaleString()}～</p>
             </div>
             <p class="room-bed">ベッドタイプ：{room.bedType}</p>
+            <p class="room-bed">{room.description}</p>
           </li>
         ))}
       </ul>
@@ -67,6 +70,7 @@ const { rooms, amenities } = content.price;
   .room-list {
     display: grid;
     gap: 16px;
+    margin-top: 30px;
   }
 
   .room-item {

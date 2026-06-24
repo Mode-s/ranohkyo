@@ -7,12 +7,14 @@ import logoImg from '../assets/images/logo.svg';
 //　メニュー / プランイメージ画像
 import item01 from '../assets/images/in-room02.png';
 import item02 from '../assets/images/in-room08.png';
-import item03 from '../assets/images/in-room04.png';
+import item03 from '../assets/images/in-room16.png';
+import item04 from '../assets/images/in-room17.png';
+import item05 from '../assets/images/in-room04.png';
 
 type Logo = { src: ImageMetadata; alt: string; href: string };
 type NavItem = { label: string; href: string };
 type Item = { image: ImageMetadata; name: string; price?: string; description?: string };
-type Room = { name: string; bedType: string; price: number };
+type Room = { name: string; bedType: string; price: number; description: string };
 type Amenity = { label: string; icon: string };
 
 export const content = {
@@ -34,16 +36,18 @@ export const content = {
   menu: {
     title: "お部屋",
     items: [
-      { image: item01, name: "シングルルーム", price: "￥11,200", description: "ベッドタイプ：シングル" },
-      { image: item02, name: "ツインルーム", price: "￥14,760", description: "ベッドタイプ：シングル２台" },
-      { image: item03, name: "トリプルルーム", price: "￥15,000", description: "布団" },
+      { image: item01, name: "シングルルーム", price: "￥12,000～", description: "ベッドタイプ：シングル" },
+      { image: item02, name: "ツインルーム", price: "￥14,500～", description: "ベッドタイプ：シングル２台" },
+      { image: item03, name: "ツインルーム", price: "￥14,500～", description: "ベッドタイプ：シングル２台" },
+      { image: item04, name: "ツインルーム", price: "￥14,500～", description: "ベッドタイプ：シングル２台" },
+      { image: item05, name: "トリプルルーム", price: "￥15,000～", description: "布団" },
     ] satisfies Item[],
   },
   price: {
     rooms: [
-      { name: 'シングル', bedType: 'シングルベッド', price: 11200 },
-      { name: 'ツイン', bedType: 'シングルベッド２台', price: 14760 },
-      { name: 'トリプル', bedType: '布団３組', price: 15000 },
+      { name: 'シングル', bedType: 'シングルベッド', price: 12000, description: '※料金はご宿泊日・シーズン・予約状況により変動いたします。' },
+      { name: 'ツイン', bedType: 'シングルベッド２台', price: 14500, description: '※料金はご宿泊日・シーズン・予約状況により変動いたします。' },
+      { name: 'トリプル', bedType: '布団３組', price: 15000, description: '※料金はご宿泊日・シーズン・予約状況により変動いたします。' },
     ] satisfies Room[],
     amenities: [
       { label: '寝室のドアの鍵', icon: 'mdi:door-closed-lock' },
