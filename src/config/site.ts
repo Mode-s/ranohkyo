@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "嵐扇居", //　企業名、店舗名
-  title: "嵐扇居",
-  description: "京都・嵐山の宿泊施設「嵐扇居」。阪急嵐山駅徒歩3分。シングル・ツイン・トリプルの客室をご用意し、Wi-Fi・キッチン・洗濯機など設備も充実。竹林や渡月橋への観光拠点としてご利用いただけます。",
+  name: "らんおうきょ | Ranohkyo", //　企業名、店舗名
+  title: "らんおうきょ | Ranohkyo",
+  description: "京都・嵐山の宿泊施設「らんおうきょ」。阪急嵐山駅徒歩3分。シングル・ツイン・トリプルの客室をご用意し、Wi-Fi・キッチン・洗濯機など設備も充実。竹林や渡月橋への観光拠点としてご利用いただけます。",
   url: "https://ranohkyo.pages.dev/",      // 本番URL（OGPの絶対パス生成にも使う）
   ogImage: "/ogp.png",
   lang: "ja",
