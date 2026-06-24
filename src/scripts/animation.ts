@@ -1,9 +1,22 @@
 const REVEAL_SELECTOR = '[data-reveal]';
+const LOAD_SELECTOR = '[data-reveal-load]';
 const VISIBLE_CLASS = 'is-visible';
 const READY_CLASS = 'is-ready';
 
+const getDelay = (el: HTMLElement) => {
+  const value = getComputedStyle(el).getPropertyValue('--reveal-delay').trim();
+  const seconds = parseFloat(value);
+  return Number.isFinite(seconds) ? seconds * 1000 : 0;
+};
+
 const revealAll = (targets: NodeListOf<HTMLElement>) => {
   targets.forEach((el) => el.classList.add(VISIBLE_CLASS));
+};
+
+const revealOnLoad = (targets: NodeListOf<HTMLElement>) => {
+  targets.forEach((el) => {
+    setTimeout(() => el.classList.add(VISIBLE_CLASS), getDelay(el));
+  });
 };
 
 const initReveal = () => {
@@ -12,6 +25,7 @@ const initReveal = () => {
 
   const html = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const loadTargets = document.querySelectorAll<HTMLElement>(LOAD_SELECTOR);
 
   if (reduceMotion || !('IntersectionObserver' in window)) {
     html.classList.add(READY_CLASS);
@@ -19,10 +33,12 @@ const initReveal = () => {
     return;
   }
 
-  // 初期非表示の描画を待ってから transition を有効化
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       html.classList.add(READY_CLASS);
+      revealOnLoad(loadTargets);
+
+      const scrollTargets = [...targets].filter((el) => !el.hasAttribute('data-reveal-load'));
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -35,7 +51,7 @@ const initReveal = () => {
         { threshold: 0.1, rootMargin: '0px 0px -8% 0px' },
       );
 
-      targets.forEach((el) => observer.observe(el));
+      scrollTargets.forEach((el) => observer.observe(el));
     });
   });
 };

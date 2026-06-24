@@ -7,18 +7,18 @@ const { logo, nav } = content.header;
 ---
 <header class="header">
   <div class="inner header-inner">
-    <h1 class="header-logo">
+    <h1 class="header-logo" data-reveal data-reveal-load>
       <a class="logo-link" href={logo.href}>
         <Image class="logo-img" src={logo.src} alt={logo.alt}  />
       </a>
     </h1>
-    <button class="hamburger" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu">
+    <button class="hamburger" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu" data-reveal data-reveal-load style="--reveal-delay: 0.15s">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
     </button>
     <nav class="nav">
-      <ul class="nav-list">
+      <ul class="nav-list" data-reveal data-reveal-load style="--reveal-delay: 0.15s">
         {nav.map((item) => (
           <li class="nav-item">
             <a class="nav-link" href={item.href}>

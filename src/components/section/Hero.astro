@@ -9,7 +9,7 @@ const slides = [hero, hero2, hero3];
 
 ---
 <section class="hero">
-  <div class="slider">
+  <div class="slider" data-reveal data-reveal-load>
     {
       slides.map((src, i) => (
         <Image
@@ -21,7 +21,7 @@ const slides = [hero, hero2, hero3];
       ))
     }
   </div>
-  <div class="indicators">
+  <div class="indicators" data-reveal data-reveal-load style="--reveal-delay: 0.3s">
     {
       slides.map((_, i) => (
         <button
@@ -70,8 +70,12 @@ const slides = [hero, hero2, hero3];
     pointer-events: none;
 
     &.is-active {
-      opacity: 1;
+      opacity: 0;
     }
+  }
+
+  :global(.js-reveal.is-ready) .hero-img.is-active {
+    opacity: 1;
   }
 
   .indicators {
