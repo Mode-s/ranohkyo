@@ -16,7 +16,7 @@ type Logo = { src: ImageMetadata; alt: string; href: string };
 type NavItem = { label: string; href: string };
 type Item = { images: ImageMetadata[]; name: string; price?: string; description?: string };
 type Room = { name: string; bedType: string; price: number; description: string };
-type Amenity = { label: string; icon: string };
+type Amenity = { label: string; icon: string; description?: string };
 
 export const content = {
   header: {
@@ -53,7 +53,7 @@ export const content = {
     amenities: [
       { label: '寝室のドアの鍵', icon: 'mdi:door-closed-lock' },
       { label: 'Wi-Fi', icon: 'mdi:wifi' },
-      { label: '洗濯機 / 乾燥機', icon: 'mdi:washing-machine' },
+      { label: '洗濯機 / 乾燥機', icon: 'mdi:washing-machine', description: '￥500/1回　洗剤・柔軟剤は無料で提供しています' },
       { label: 'キッチン', icon: 'mdi:stove' },
       { label: 'エアコン', icon: 'mdi:air-conditioner' },
       { label: '冷蔵庫', icon: 'mdi:fridge' },

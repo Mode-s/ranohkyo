@@ -35,6 +35,7 @@ const { rooms, amenities } = content.price;
           <li class="amenity-item" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
             <Icon class="amenity-icon" name={item.icon} />
             <span class="amenity-label">{item.label}</span>
+            {item.description && <span class="amenity-description">{item.description}</span>}
           </li>
         ))}
       </ul>
@@ -126,6 +127,12 @@ const { rooms, amenities } = content.price;
   .amenity-label {
     font-size: $fs-sm;
     line-height: 1.5;
+  }
+
+  .amenity-description {
+    font-size: $fs-xs;
+    line-height: 1.5;
+    color: $sub-c;
   }
 
   @include tb {
